@@ -32,7 +32,7 @@ def get_serial(port):
         file.close()
         return serial
     except FileNotFoundError:
-        logging.debug('[nanny][get_serial] No serial file in port - no device'.format(e))
+        logging.debug('[nanny][get_serial] No serial file in port - no device')
         return None
 
 
