@@ -111,7 +111,8 @@ def verify_match(serial, location, port, device_id):
     try:
         serial_from_db = db.get_serial_number_from_port(location, port)
     except Exception as e:
-        logging.debug("[nanny][verify_match] Setting serial from DB to None because of Exception: {}".format(e))
+        logging.debug("[nanny][verify_match] Setting serial from DB to None because of Exception: {}\n"
+                      "Port: {} Location: {}".format(e, port, location))
         serial_from_db = None
     logging.debug("[nanny][verify_match] SN from File: {} SN From DB: {}".
                   format(serial_from_file, serial_from_db))
