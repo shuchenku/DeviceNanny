@@ -43,7 +43,6 @@ def usb_devices():
     :return: Directory names
     """
     dir_names = next(os.walk('/sys/bus/usb/devices/'))
-    logging.debug('[nanny][usb_devices] All ports: {}'.format(dir_names[1]))
     return dir_names[1]
 
 
@@ -53,6 +52,7 @@ def check_usb_connections():
     """
     connections = usb_devices()
     for c in connections:
+        logging.debug("[nanny][check_usb_connections] STARTING CHECK FOR PORT {}".format(c))
         update_db(c)
 
 
