@@ -32,7 +32,7 @@ def get_serial(port):
         file.close()
         return serial
     except FileNotFoundError:
-        logging.debug('[nanny][get_serial] No serial file for port')
+        logging.debug('[nanny][get_serial] No serial file for port, returning None')
         return None
 
 
@@ -64,7 +64,6 @@ def update_db(port):
     the system is turned off.
     :param port: USB port
     """
-    logging.debug('[nanny][update_db] Port from /sys/bus/usb/devices/: {}'.format(port))
     serial = get_serial(port)
     if serial is None:
         was_port_registered(location, port)
