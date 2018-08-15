@@ -31,7 +31,7 @@ def get_serial(port):
             logging.debug('[nanny][get_serial] Serial from port {}: {}'.format(port, serial))
         file.close()
         return serial
-    except NotADirectoryError:
+    except FileNotFoundError:
         logging.debug('[nanny][get_serial] No serial file in port - no device'.format(e))
         return None
 
